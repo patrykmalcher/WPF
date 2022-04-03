@@ -91,12 +91,13 @@ let rec below x s =
             let help = cmp (x, x) (a, b)
             in 
                 if help = 0 then 
-					if a = min_int then sum (sum (sum (sum (sum (x) (subtree l)) (1)) (max_int)) (count l)) 1
-					else sum (sum (sum (sum (x) (-a)) (1)) (subtree l)) (count l) 
-                else if help = -1 then below x l 
+			if a = min_int then sum (sum (sum (sum (sum (x) (subtree l)) (1)) (max_int)) (count l)) 1
+			else sum (sum (sum (sum (x) (-a)) (1)) (subtree l)) (count l) 
+                else if help = -1
+			then below x l 
                 else 
-					if a = min_int then sum (sum (sum (below x r) (sum (subtree l) (sum (sum (b) (max_int)) (1)))) (count l)) 1
-					else sum (sum (below x r) (sum (subtree l) (sum (sum (b) (-a)) (1)))) (count l)
+			if a = min_int then sum (sum (sum (below x r) (sum (subtree l) (sum (sum (b) (max_int)) (1)))) (count l)) 1
+			else sum (sum (below x r) (sum (subtree l) (sum (sum (b) (-a)) (1)))) (count l)
         | _ -> 0 
 
 (*balansuje drzewo (zmodyfikowana funkcja z danego kodu)*)
